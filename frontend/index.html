@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Translate Sanskrit text, PDFs, and images into English using a local Python NLP backend.">
+  <title>Sanskrit Translator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Sanskrit Translator home">
+      <span class="brand-mark" aria-hidden="true">सं</span>
+      <span><strong>Sanskrit Translator</strong></span>
+    </a>
+    <div class="backend-area">
+      <span id="backendStatus" class="status status-unknown">Backend not checked</span>
+      <button id="checkBackendBtn" class="button button-secondary" type="button">Check backend</button>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <p class="eyebrow">SANSKRIT <span aria-hidden="true">→</span> ENGLISH</p>
+      <h1>Translate your Sanskrit text into English 😊</h1>
+    </section>
+
+    <section class="translator-card" aria-label="Translation tools">
+      <div class="tabs" role="tablist" aria-label="Translation type">
+        <button class="tab active" type="button" role="tab" aria-selected="true" data-tab="textPanel">Text translation</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" data-tab="pdfPanel">PDF translation</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" data-tab="imagePanel">Image translation</button>
+      </div>
+
+      <section id="textPanel" class="tab-panel" role="tabpanel">
+        <div class="language-labels"><span>Sanskrit input</span><span>English translation</span></div>
+        <div class="text-grid">
+          <div class="field-wrap">
+            <label class="sr-only" for="sourceText">Enter Sanskrit text</label>
+            <textarea id="sourceText" placeholder="Enter Sanskrit text here..." maxlength="30000" spellcheck="false"></textarea>
+            <div class="field-footer"><span id="charCount">0 / 30000</span><button id="clearBtn" class="text-button" type="button">Clear</button></div>
+          </div>
+          <div class="field-wrap output-wrap">
+            <label class="sr-only" for="translationOutput">English translation</label>
+            <div id="translationOutput" class="output" aria-live="polite">Your English translation will appear here.</div>
+            <div class="field-footer"><span id="translationStatus">Ready to translate</span><button id="copyBtn" class="text-button" type="button">Copy translation</button></div>
+          </div>
+        </div>
+        <div class="action-row"><p id="textMessage" class="message" role="status"></p><button id="translateBtn" class="button button-primary" type="button">Translate text <span aria-hidden="true">→</span></button></div>
+      </section>
+
+      <section id="pdfPanel" class="tab-panel hidden" role="tabpanel">
+        <h2>Translate a PDF document</h2>
+        <p class="section-copy">Upload a text-based or scanned PDF. Scanned pages require Tesseract OCR with Sanskrit language data installed.</p>
+        <label class="upload-box" for="pdfFile"><span class="upload-icon" aria-hidden="true">↑</span><strong>Choose a PDF file</strong><span>PDF only · Maximum 15 MB</span><input id="pdfFile" type="file" accept="application/pdf,.pdf"></label>
+        <p id="pdfFileName" class="file-name">No file selected</p>
+        <div class="action-row"><p id="pdfMessage" class="message" role="status"></p><button id="translatePdfBtn" class="button button-primary" type="button">Translate PDF</button></div>
+        <div id="pdfResult" class="result-box hidden"><h3>English translation</h3><pre id="pdfOutput"></pre><button id="downloadPdfTextBtn" class="button button-secondary" type="button">Download translation (.txt)</button></div>
+      </section>
+
+      <section id="imagePanel" class="tab-panel hidden" role="tabpanel">
+        <h2>Translate Sanskrit from an image</h2>
+        <p class="section-copy">Upload an image containing Sanskrit text. OCR language data must be installed on the backend computer.</p>
+        <label class="upload-box" for="imageFile"><span class="upload-icon" aria-hidden="true">↑</span><strong>Choose an image</strong><span>PNG, JPG, or JPEG · Maximum 15 MB</span><input id="imageFile" type="file" accept="image/png,image/jpeg,.png,.jpg,.jpeg"></label>
+        <p id="imageFileName" class="file-name">No file selected</p>
+        <div class="action-row"><p id="imageMessage" class="message" role="status"></p><button id="translateImageBtn" class="button button-primary" type="button">Extract and translate</button></div>
+        <div id="imageResult" class="result-box hidden"><h3>Extracted Sanskrit text</h3><textarea id="extractedText" class="extracted-text" readonly></textarea><h3>English translation</h3><pre id="imageOutput"></pre><button id="downloadImageTextBtn" class="button button-secondary" type="button">Download translation (.txt)</button></div>
+      </section>
+    </section>
+
+  </main>
+  <footer class="site-footer">-- Sanskrit  Translator ✅ -- </footer>
+</body>
+</html>
