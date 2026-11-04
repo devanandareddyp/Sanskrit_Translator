@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-multipart
+transformers==4.49.0
+sentencepiece
+sacremoses
+PyMuPDF
+Pillow
+pytesseract
+torch
+IndicTransToolkit
