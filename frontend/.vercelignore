@@ -1,0 +1,9 @@
+*.py
+requirements.txt
+render.yaml
+DEPLOYMENT_NOTES.txt
+project_report_outline.md
+README.md
+package-lock.json
+.venv
+__pycache__
