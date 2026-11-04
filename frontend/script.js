@@ -1,5 +1,5 @@
 /* Sanskrit Translator frontend. Keep API calls in this file. */
-const API_BASE_URL = "https://sanskrit-translator-api.onrender.com";
+const API_BASE_URL = "https://sanskrit-translator-1.onrender.com";
 const $ = (id) => document.getElementById(id);
 let lastTranslation = "";
 
